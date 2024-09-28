@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { OPENSAN_REGULAR } from '../util/const'
 
 const styles = StyleSheet.create({
     review: {
         fontSize: 30,
-        fontFamily: 'Cannie'
+        fontFamily: OPENSAN_REGULAR
     }
 })
 
