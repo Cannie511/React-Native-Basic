@@ -8,9 +8,10 @@ import AboutScreen from './components/review/about';
 import { OPENSAN_REGULAR } from './components/util/const';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootStackParamList } from './components/types/route';
 
 SplashScreen.preventAutoHideAsync();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = () => {
   const [loaded, error] = useFonts({
     [OPENSAN_REGULAR]: require('./assets/fonts/OpenSans-Regular.ttf')

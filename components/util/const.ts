@@ -5,5 +5,11 @@ export const globalStyle = StyleSheet.create({
     globalFont: {
         fontFamily: OPENSAN_REGULAR,
         fontSize: 20
-    }
+    },
+    backgroundMain: {
+        backgroundColor: 'black'
+    },
+    homeLayout: {
+        padding: 10
+    },
 });

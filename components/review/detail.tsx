@@ -1,20 +1,28 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { OPENSAN_REGULAR } from '../util/const'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import { globalStyle, OPENSAN_REGULAR } from '../util/const'
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { RootStackParamList } from '../types/route'
 
 const styles = StyleSheet.create({
-    review: {
-        fontSize: 30,
-        fontFamily: OPENSAN_REGULAR
-    }
+  review: {
+      fontSize: 30,
+      fontFamily: OPENSAN_REGULAR
+  },
+  reviewText: {
+    fontSize: 25,
+    fontFamily:OPENSAN_REGULAR
+  }
 })
 
 const DetailScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<RootStackParamList>>();
   return (
-    <View>
-          <Text style={styles.review}>
-              Detail screen google
-          </Text>
+    <View style={[globalStyle.homeLayout]}>
+      <Text style={styles.reviewText}>Tiêu đề: #{route.params?.id} {route.params?.title}</Text>
+      <Text style={styles.reviewText}>Đánh giá: {route.params?.stars} sao</Text>
+      <Button title='Back home' onPress={()=>navigation.navigate('Home')}/>
     </View>
   )
 }
