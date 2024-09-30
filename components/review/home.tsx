@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { globalStyle } from '../util/const'
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../types/route';
 
@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
   },
   homeFont: {
     fontSize: 30,
+    fontWeight: '600',
+    marginBottom:15
   },
   reviewItem: {
     padding: 15,
@@ -33,7 +35,7 @@ const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   return (
     <View style={styles.homeLayout}>
-      <Text style={[styles.homeFont, globalStyle.globalFont]}>
+      <Text style={[styles.homeFont]}>
         Review list
       </Text>
       <View>
@@ -45,7 +47,10 @@ const HomeScreen = () => {
               <TouchableOpacity onPress={() => navigation.navigate('Detail', { id: item.id, title: item.title, stars: item.stars})}>
                 <View style={styles.reviewItem}>
                   <Text>{item.title}</Text>
-                  <Text>{item.stars} sao</Text>
+                  <Text>
+                    ({item.stars})
+                    
+                  </Text>
                 </View>
               </TouchableOpacity>
             )

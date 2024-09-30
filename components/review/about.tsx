@@ -5,15 +5,18 @@ import { globalStyle } from '../util/const'
 const styles = StyleSheet.create({
   about: {
 
+  },
+  copyright: {
+    fontSize:15
   }
 });
 
 const AboutScreen = () => {
   return (
-      <View>
-          <Text style={[styles.about, globalStyle.globalFont]}>
-              About screen
-          </Text>
+    <View style={globalStyle.homeLayout}>
+        <Text style={[globalStyle.globalFont,styles.copyright]}>
+            Copyright &copy; 2024 by Freet Corporation
+        </Text>
     </View>
   )
 }

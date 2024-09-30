@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
-import HomeScreen from './components/review/home';
-import DetailScreen from './components/review/detail';
-import AboutScreen from './components/review/about';
-import { OPENSAN_REGULAR } from './components/util/const';
+import { backgroundHeader, OPENSAN_REGULAR } from './components/util/const';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList } from './components/types/route';
+import 'react-native-gesture-handler';
+import { AppNavigation } from './components/navigation/app.navigation';
+import { SafeAreaView } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
-const Stack = createNativeStackNavigator<RootStackParamList>();
+
 const App = () => {
   const [loaded, error] = useFonts({
     [OPENSAN_REGULAR]: require('./assets/fonts/OpenSans-Regular.ttf')
@@ -27,13 +24,11 @@ const App = () => {
     return null;
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{title:'Trang chủ'}} name='Home' component={HomeScreen}/>
-        <Stack.Screen options={{title:'Chi tiết'}} name='Detail' component={DetailScreen}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-    
+    <SafeAreaView style={{flex:1, backgroundColor:backgroundHeader}}>
+      <NavigationContainer>
+        <AppNavigation/>
+      </NavigationContainer>
+    </SafeAreaView>
   )
 }
 
